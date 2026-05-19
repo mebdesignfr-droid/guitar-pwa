@@ -300,39 +300,6 @@
     #fsb-close{ display:block; }
   }
 
-  /* ── QR CODE ── */
-  #qr-fab{
-    position:fixed;bottom:1.5rem;left:1.5rem;z-index:400;
-    width:42px;height:42px;border-radius:50%;
-    background:var(--bg3);border:1px solid var(--border);
-    box-shadow:0 4px 16px rgba(0,0,0,.4);
-    cursor:pointer;font-size:1.1rem;
-    display:flex;align-items:center;justify-content:center;
-    transition:transform .15s,border-color .15s;color:var(--text2);
-  }
-  #qr-fab:hover{transform:scale(1.08);border-color:var(--accent);color:var(--text1);}
-  #qr-modal{
-    display:none;position:fixed;inset:0;z-index:500;
-    background:rgba(0,0,0,.7);backdrop-filter:blur(4px);
-    align-items:center;justify-content:center;
-  }
-  #qr-modal.open{display:flex;}
-  #qr-box{
-    background:var(--bg2);border:1px solid var(--border);
-    border-radius:16px;padding:1.5rem;
-    display:flex;flex-direction:column;align-items:center;gap:.8rem;
-    box-shadow:0 12px 48px rgba(0,0,0,.6);
-    max-width:280px;width:90vw;
-  }
-  #qr-box h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:var(--text1);}
-  #qr-canvas{background:#fff;border-radius:8px;padding:8px;}
-  #qr-url{font-family:'DM Mono',monospace;font-size:.62rem;color:var(--text3);
-    word-break:break-all;text-align:center;line-height:1.5;}
-  #qr-close{font-family:'DM Mono',monospace;font-size:.75rem;padding:.35rem 1rem;
-    border-radius:8px;border:1px solid var(--border);background:var(--bg3);
-    color:var(--text2);cursor:pointer;transition:all .15s;margin-top:.2rem;}
-  #qr-close:hover{border-color:var(--accent);color:var(--text1);}
-
   /* ── DEGRÉS ── */
   .fsb-btn .deg-badge{
     display:none;
@@ -486,11 +453,6 @@
   <div id="fsb-shapes" style="display:flex;flex-direction:column;gap:3px;"></div>
 </div>
 
-<script>
-/* Minimal QR Code generator - pure JS, no dependencies */
-/* Based on qrcode-generator by kazuhikoarase (MIT License) */
-var qrcode=function(){var b=function(a,c){this.typeNumber=a;this.errorCorrectLevel=c;this.modules=null;this.moduleCount=0;this.dataCache=null;this.dataList=[]};b.prototype={addData:function(a){this.dataList.push(new r(a));this.dataCache=null},make:function(){if(this.typeNumber<1){this.typeNumber=1;for(var a=0;a<40;a++){var c=q(this.errorCorrectLevel,a),d=new n(a),f=0,g=0;for(g=0;g<this.dataList.length;g++){var e=this.dataList[g];f+=e.getLengthInBits(a)}for(g=0;g<c.length;g++)f+=c[g].dataCount*8;if(d.getTotalCount()>=f){this.typeNumber=a;break}}}this.makeImpl(!1,this.getBestMaskPattern())},makeImpl:function(a,c){this.moduleCount=this.typeNumber*4+17;this.modules=[];for(var d=0;d<this.moduleCount;d++){this.modules[d]=[];for(var f=0;f<this.moduleCount;f++)this.modules[d][f]=null}this.setupPositionProbePattern(0,0);this.setupPositionProbePattern(this.moduleCount-7,0);this.setupPositionProbePattern(0,this.moduleCount-7);this.setupPositionAdjustPattern();this.setupTimingPattern();this.setupTypeInfo(a,c);6<=this.typeNumber&&this.setupTypeNumber(a);this.dataCache==null&&(this.dataCache=b.createData(this.typeNumber,this.errorCorrectLevel,this.dataList));this.mapData(this.dataCache,c)},setupPositionProbePattern:function(a,c){for(var d=-1;d<=7;d++)if(!(a+d<=-1||this.moduleCount<=a+d))for(var f=-1;f<=7;f++)if(!(c+f<=-1||this.moduleCount<=c+f))this.modules[a+d][c+f]=0<=d&&d<=6&&(f==0||f==6)||0<=f&&f<=6&&(d==0||d==6)||2<=d&&d<=4&&2<=f&&f<=4?!0:!1},getBestMaskPattern:function(){for(var a=0,c=0,d=0;d<8;d++){this.makeImpl(!0,d);var f=b.getLostPoint(this);(d==0||a>f)&&(a=f,c=d)}return c},setupTimingPattern:function(){for(var a=8;a<this.moduleCount-8;a++)this.modules[a][6]==null&&(this.modules[a][6]=a%2==0);for(var a=8;a<this.moduleCount-8;a++)this.modules[6][a]==null&&(this.modules[6][a]=a%2==0)},setupPositionAdjustPattern:function(){for(var a=b.getPatternPosition(this.typeNumber),c=0;c<a.length;c++)for(var d=0;d<a.length;d++){var f=a[c],g=a[d];if(this.modules[f][g]==null){for(var e=-2;e<=2;e++)for(var h=-2;h<=2;h++)this.modules[f+e][g+h]=e==-2||e==2||h==-2||h==2||e==0&&h==0?!0:!1}}},setupTypeNumber:function(a){for(var c=b.getBCHTypeNumber(this.typeNumber),d=0;d<18;d++){var f=!a&&(c>>d&1)==1;this.modules[Math.floor(d/3)][d%3+this.moduleCount-8-3]=f}for(var d=0;d<18;d++){var f=!a&&(c>>d&1)==1;this.modules[d%3+this.moduleCount-8-3][Math.floor(d/3)]=f}},setupTypeInfo:function(a,c){for(var d=b.getBCHTypeInfo(this.errorCorrectLevel<<3|c),f=0;f<15;f++){var g=!a&&(d>>f&1)==1;f<6?this.modules[f][8]=g:f<8?this.modules[f+1][8]=g:this.modules[this.moduleCount-15+f][8]=g}for(var f=0;f<15;f++){var g=!a&&(d>>f&1)==1;f<8?this.modules[8][this.moduleCount-f-1]=g:f<9?this.modules[8][15-f-1+1]=g:this.modules[8][15-f-1]=g}this.modules[this.moduleCount-8][8]=!a},mapData:function(a,c){for(var d=-1,f=this.moduleCount-1,g=7,e=0,h=this.moduleCount-1;0<h;h-=2){h==6&&h--;for(;;){for(var k=0;k<2;k++)if(this.modules[f][h-k]==null){var p=!1;e<a.length&&(p=(a[e]>>>g&1)==1);b.getMask(c,f,h-k)&&(p=!p);this.modules[f][h-k]=p;g--;g==-1&&(e++,g=7)}f+=d;if(f<0||this.moduleCount<=f){f-=d;d=-d;break}}}},getModuleCount:function(){return this.moduleCount},isDark:function(a,c){if(a<0||this.moduleCount<=a||c<0||this.moduleCount<=c)throw Error(a+","+c);return this.modules[a][c]}};b.PAD0=236;b.PAD1=17;b.createData=function(a,c,d){for(var f=q(c,a),g=new n(a),e=0;e<d.length;e++){var h=d[e];g.put(h.mode,4);g.put(h.getLength(),b.getLengthInBits(h.mode,a));h.write(g)}for(var e=0,k=0;k<f.length;k++)e+=f[k].dataCount;if(g.getLengthInBits()>8*e)throw Error("code length overflow. ("+g.getLengthInBits()+">"+8*e+")");for(g.getLengthInBits()+4<=8*e&&g.put(0,4);g.getLengthInBits()%8!=0;)g.putBit(!1);for(;;){if(g.getLengthInBits()>=8*e)break;g.put(b.PAD0,8);if(g.getLengthInBits()>=8*e)break;g.put(b.PAD1,8)}return b.createBytes(g,f)};b.createBytes=function(a,c){for(var d=0,f=0,g=0,e=new Array(c.length),h=new Array(c.length),k=0;k<c.length;k++){var p=c[k].dataCount,t=c[k].totalCount-p;f=Math.max(f,p);g=Math.max(g,t);e[k]=new Array(p);for(var m=0;m<e[k].length;m++)e[k][m]=255&a.buffer[d++];h[k]=new Array(t);for(var m=0;m<c[k].totalCount-p;m++)h[k][m]=255&a.buffer[d++]}var l=0,s=new Array(c[0].totalCount);for(var m=0;m<f;m++)for(var k=0;k<c.length;k++)m<e[k].length&&(s[l++]=e[k][m]);for(var m=0;m<g;m++)for(var k=0;k<c.length;k++)m<h[k].length&&(s[l++]=h[k][m]);return s};b.getLostPoint=function(a){for(var c=a.getModuleCount(),d=0,f=0;f<c;f++){for(var g=0;g<c;g++){for(var e=0,h=a.isDark(f,g),k=-1;k<=1;k++)if(!(f+k<0||c<=f+k))for(var p=-1;p<=1;p++)k==0&&p==0||h==a.isDark(f+k,g+p)&&e++;e>5&&(d+=3+e-5)}for(var g=0;g<c-1;g++){var t=0;a.isDark(f,g)&&t++;a.isDark(f+1,g)&&t++;a.isDark(f,g+1)&&t++;a.isDark(f+1,g+1)&&t++;(t==0||t==4)&&(d+=3)}}for(var g=0;g<c;g++)for(var f=0;f<c-6;f++)a.isDark(f,g)&&!a.isDark(f+1,g)&&a.isDark(f+2,g)&&a.isDark(f+3,g)&&a.isDark(f+4,g)&&!a.isDark(f+5,g)&&a.isDark(f+6,g)&&(d+=40);for(var f=0;f<c;f++){for(var g=0,e=0;e<c;e++)a.isDark(f,e)&&g++;d+=Math.abs(100*g/c-50)/5*10}return d};b.getPatternPosition=function(a){return[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]][a-1]};b.getBCHTypeInfo=function(a){for(var c=a<<10;0<=b.getBCHDigit(c)-b.getBCHDigit(1335);)c^=1335<<b.getBCHDigit(c)-b.getBCHDigit(1335);return(a<<10|c)^21522};b.getBCHTypeNumber=function(a){for(var c=a<<12;0<=b.getBCHDigit(c)-b.getBCHDigit(7973);)c^=7973<<b.getBCHDigit(c)-b.getBCHDigit(7973);return a<<12|c};b.getBCHDigit=function(a){for(var c=0;0!=a;)c++,a>>>=1;return c};b.getMask=function(a,c,d){switch(a){case 0:return(c+d)%2==0;case 1:return c%2==0;case 2:return d%3==0;case 3:return(c+d)%3==0;case 4:return(Math.floor(c/2)+Math.floor(d/3))%2==0;case 5:return c*d%2+c*d%3==0;case 6:return(c*d%2+c*d%3)%2==0;case 7:return(c*d%3+(c+d)%2)%2==0}};b.getLengthInBits=function(a,c){if(1<=c&&c<10){if(a==1)return 10;if(a==2)return 9;if(a==4)return 8;if(a==8)return 8}else if(c<27){if(a==1)return 12;if(a==2)return 11;if(a==4)return 16;if(a==8)return 10}else if(c<41){if(a==1)return 14;if(a==2)return 13;if(a==4)return 16;if(a==8)return 12}throw Error("mode:"+a+", typeNumber:"+c)};function q(a,c){switch(a){case 1:return[[1,26,19],[1,26,16],[1,26,13],[1,26,9]][c];case 0:return[[1,44,34],[1,44,28],[1,44,22],[1,44,16]][c]}return null}function n(a){this.typeNumber=a;this.buffer=[];this.length=0}n.prototype={put:function(a,c){for(var d=0;d<c;d++)this.putBit((a>>>(c-d-1)&1)==1)},getLengthInBits:function(){return this.length},putBit:function(a){var c=Math.floor(this.length/8);this.buffer.length<=c&&this.buffer.push(0);a&&(this.buffer[c]|=128>>>this.length%8);this.length++}};function r(a){this.mode=4;this.data=a}r.prototype={getLength:function(){return this.data.length},getLengthInBits:function(a){return this.data.length*8+b.getLengthInBits(4,a)},write:function(a){for(var c=0;c<this.data.length;c++){var d=this.data.charCodeAt(c);a.put(d,8)}}};return function(a,c){return new b(a,c||0)}}();
-</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 <script>
 // ── DATA ─────────────────────────────────────────────────────────
@@ -672,15 +634,13 @@ function drawFretboard(id,rs,qual,shapes,onClick) {
     t.textContent=f; svg.appendChild(t);
   });
   for(let f=1;f<=FRETS;f++){
-    const isDot=[3,5,7,9,12].includes(f);
-    // Top — tous les numéros
-    const tt=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP-6,'text-anchor':'middle','font-size':isDot?'20':'16','font-family':'DM Mono, monospace',fill:isDot?'rgba(255,255,255,0.9)':'rgba(255,255,255,0.5)','font-weight':isDot?'800':'600'});
+    if([3,5,7,9,12].includes(f)) continue;
+    // Top — numéros hors points (comme avant)
+    const tt=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP-6,'text-anchor':'middle','font-size':'16','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.5)','font-weight':'600'});
     tt.textContent=f; svg.appendChild(tt);
-    // Bottom — numéros hors points (les points ont déjà le leur)
-    if(!isDot){
-      const tb=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP+5*CH+22,'text-anchor':'middle','font-size':'16','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.45)','font-weight':'600'});
-      tb.textContent=f; svg.appendChild(tb);
-    }
+    // Bottom — numéros hors points (nouveau)
+    const tb=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP+5*CH+22,'text-anchor':'middle','font-size':'16','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.45)','font-weight':'600'});
+    tb.textContent=f; svg.appendChild(tb);
   }
   for(let s=0;s<6;s++){
     const t=svgE('text',{x:LEFT-8,y:TOP+s*CH+4,'text-anchor':'middle','font-size':'10','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.6)','font-size':'14','font-weight':'600'});
@@ -1775,18 +1735,6 @@ document.addEventListener('click', function firstClick() {
   <!-- Bouton lancer -->
   <button class="ad-launch-btn" id="ad-launch-btn" onclick="adToggle()">▶ Lancer</button>
 </div>
-
-<!-- QR CODE FAB -->
-<button id="qr-fab" onclick="qrOpen()" title="QR Code — partager l'app">⬡</button>
-<div id="qr-modal" onclick="qrClose(event)">
-  <div id="qr-box">
-    <h3>📱 Scanner pour ouvrir</h3>
-    <canvas id="qr-canvas" style="border-radius:8px;"></canvas>
-    <div id="qr-url"></div>
-    <button id="qr-close" onclick="qrClose()">Fermer</button>
-  </div>
-</div>
-
 
 <script>
 if ('serviceWorker' in navigator) {
