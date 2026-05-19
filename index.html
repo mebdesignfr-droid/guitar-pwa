@@ -758,8 +758,14 @@ function drawChordDiagram(shape,rs,qual) {
     return el;
   }
 
-  // Toujours afficher le numéro de case à gauche
-  cdSvg.appendChild(se('text',{x:pL-8,y:pT+cH*0.65,'text-anchor':'end','font-size':'18','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.9)','font-weight':'700'},String(boxStart)));
+  // Numéro de case pour chaque ligne — repères guitare (3,5,7,9,12) en évidence
+  for(let f=0;f<nFrets;f++){
+    const fn=boxStart+f, isMark=[3,5,7,9,12].includes(fn);
+    cdSvg.appendChild(se('text',{x:pL-6,y:pT+(f+0.5)*cH+4,'text-anchor':'end',
+      'font-size':isMark?'12':'10','font-family':'DM Mono, monospace',
+      fill:isMark?'rgba(255,255,255,0.85)':'rgba(255,255,255,0.4)',
+      'font-weight':isMark?'700':'400'},String(fn)));
+  }
   // Sillet uniquement en position ouverte (case 1 = sillet visible)
   if(!isBarre){
     cdSvg.appendChild(se('rect',{x:pL,y:pT-7,width:gW,height:7,fill:'#d8d4cc',rx:2}));
@@ -810,7 +816,7 @@ function drawChordDiagram(shape,rs,qual) {
     cdSvg.appendChild(se('circle',{cx:x,cy:y,r:dotR,fill:col,stroke:isRoot?'#fff':'none','stroke-width':isRoot?2:0,opacity:0.95}));
     const noteName=NOTES_FR[(OPEN_SEMI[s]+fret)%12];
     cdSvg.appendChild(se('text',{x,y:y+3.5,'text-anchor':'middle','font-size':noteName.length>2?'7':'8.5','font-family':'DM Mono, monospace','font-weight':'500',fill:'#fff','pointer-events':'none'},noteName));
-    if(finger){
+    if(finger&&finger>1){
       cdSvg.appendChild(se('text',{x:x+dotR+1,y:y-dotR+3,'text-anchor':'start','font-size':'8','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.6)','pointer-events':'none'},String(finger)));
       fingerUsed.add(finger);
     }
