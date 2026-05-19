@@ -497,7 +497,8 @@ var qrcode=function(){var b=function(a,c){this.typeNumber=a;this.errorCorrectLev
 const NOTES_FR   = ['Mi','Fa','Fa#','Sol','Sol#','La','La#','Si','Do','Do#','Ré','Ré#'];
 const NOTES_LABEL= ['Mi (E)','Fa (F)','Fa# (F#)','Sol (G)','Sol# (G#)','La (A)','La# (A#)','Si (B)','Do (C)','Do# (C#)','Ré (D)','Ré# (D#)'];
 const NOTES_EN   = ['E','F','F#','G','G#','A','A#','B','C','C#','D','D#'];
-const OPEN_SEMI  = [0,5,10,3,7,0]; // E A D G B e
+const OPEN_SEMI  = [0,5,10,3,7,0]; // E A D G B e — classes de hauteur (affichage)
+const OPEN_SEMI_ABS = [0,5,10,15,19,24]; // E2 A2 D3 G3 B3 E4 — demi-tons absolus (audio)
 const STRING_NAMES = ['Mi grave','La','Ré','Sol','Si','Mi aigu'];
 const SHAPE_FR   = {C:'Do',A:'La',G:'Sol',E:'Mi',D:'Ré'};
 
@@ -552,7 +553,7 @@ let soundOn=false, sampler=null, samplerReady=false, samplerLoading=false;
 
 function semiToNoteName(semi) {
   const names=['E','F','F#','G','G#','A','A#','B','C','C#','D','D#'];
-  const abs=semi+28;
+  const abs=semi+16;
   const octave=Math.floor(abs/12)+1;
   return names[((semi%12)+12)%12]+octave;
 }
@@ -610,7 +611,7 @@ function collectNotes(rs,qual,shapes) {
       else if(rel===0) fret=shift;
       else fret=rel+shift;
       if(fret<0||fret>15) return;
-      const semi=OPEN_SEMI[s]+fret;
+      const semi=OPEN_SEMI_ABS[s]+fret;
       if(!by[s]||fret<by[s].fret) by[s]={fret,semi};
     });
   }
@@ -697,7 +698,7 @@ function drawFretboard(id,rs,qual,shapes,onClick) {
       else fret=rel+shift;
       if(fret<0||fret>FRETS) return;
       const noteSemi=(OPEN_SEMI[s]+fret)%12;
-      fingers.push({s,fret,finger:f,isRoot:noteSemi===rs,semi:OPEN_SEMI[s]+fret,sh,inBarre:barreInfo&&s>=barreInfo.from&&s<=barreInfo.to&&f===1&&rel===0});
+      fingers.push({s,fret,finger:f,isRoot:noteSemi===rs,semi:OPEN_SEMI_ABS[s]+fret,sh,inBarre:barreInfo&&s>=barreInfo.from&&s<=barreInfo.to&&f===1&&rel===0});
     });
     if(fingers.length<2) continue;
 
