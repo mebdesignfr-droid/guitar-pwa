@@ -1511,7 +1511,7 @@ const adState = {
   interval:7, loop:false,
   useRootsOrder:true, useShapesOrder:true,
   rootIdx:0, shapeIdx:0, totalSteps:0,
-  animFrame:null, startTime:null
+  animFrame:null, startTime:null, replayTimers:[]
 };
 const AD_ROOTS = [4,5,6,7,8,9,10,11,0,1,2,3]; // Mi en premier
 const AD_SHAPES = ['C','A','G','E','D'];
@@ -1552,6 +1552,7 @@ function adToggleLoop(btn){
 
 function adNext(){
   if(adState.animFrame) cancelAnimationFrame(adState.animFrame);
+  adState.replayTimers.forEach(t=>clearTimeout(t)); adState.replayTimers=[];
 
   // Fin de séquence sans boucle
   if(adState.useRootsOrder && adState.useShapesOrder && !adState.loop){
@@ -1597,8 +1598,22 @@ function adNext(){
   const stepEl=document.getElementById('ad-step-txt');
   if(stepEl) stepEl.textContent='#'+adState.totalSteps;
 
-  // Son
-  if(soundOn&&samplerReady){ const notes=collectNotes(rs,quality,new Set([sh])); setTimeout(()=>pluckChordNotes(notes),150); }
+  // Son : délai initial + répétitions adaptées au timer
+  if(soundOn&&samplerReady){
+    const notes=collectNotes(rs,quality,new Set([sh]));
+    const dur=adState.interval*1000;
+    if(dur<4000){
+      // Timer court : joue tout de suite
+      adState.replayTimers.push(setTimeout(()=>{ if(adState.running&&samplerReady) pluckChordNotes(notes); },150));
+    } else {
+      // Délai initial 1.5s puis répétitions toutes les 4-8s selon timer
+      const rep=Math.max(4000,Math.min(8000,Math.floor(dur/5)));
+      for(let t=1500; t<dur-1000; t+=rep){
+        const delay=t;
+        adState.replayTimers.push(setTimeout(()=>{ if(adState.running&&samplerReady) pluckChordNotes(notes); },delay));
+      }
+    }
+  }
 
   // Timer
   const bar=document.getElementById('ad-progress-bar');
@@ -1625,6 +1640,7 @@ function adNext(){
 function adStop(){
   adState.running=false;
   if(adState.animFrame) cancelAnimationFrame(adState.animFrame);
+  adState.replayTimers.forEach(t=>clearTimeout(t)); adState.replayTimers=[];
   const fab=document.getElementById('ad-fab'); if(fab) fab.classList.remove('running');
   const btn=document.getElementById('ad-launch-btn'); if(btn){ btn.textContent='▶ Lancer'; btn.classList.remove('running'); }
   const bar=document.getElementById('ad-progress-bar'); if(bar) bar.style.display='none';
