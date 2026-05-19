@@ -667,14 +667,20 @@ function drawFretboard(id,rs,qual,shapes,onClick) {
     } else {
       svg.appendChild(svgE('circle',{cx:x,cy:y,r:7,fill:'rgba(255,255,255,0.45)'}));
     }
-    // Fret number below
+    // Fret number below (dot positions — bold)
     const t=svgE('text',{x,y:TOP+5*CH+22,'text-anchor':'middle','font-size':'20','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.9)','font-weight':'800'});
     t.textContent=f; svg.appendChild(t);
   });
   for(let f=1;f<=FRETS;f++){
-    if([3,5,7,9,12].includes(f)) continue; // already drawn with markers
-    const t=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP-6,'text-anchor':'middle','font-size':'16','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.5)','font-weight':'600'});
-    t.textContent=f; svg.appendChild(t);
+    const isDot=[3,5,7,9,12].includes(f);
+    // Top — tous les numéros
+    const tt=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP-6,'text-anchor':'middle','font-size':isDot?'20':'16','font-family':'DM Mono, monospace',fill:isDot?'rgba(255,255,255,0.9)':'rgba(255,255,255,0.5)','font-weight':isDot?'800':'600'});
+    tt.textContent=f; svg.appendChild(tt);
+    // Bottom — numéros hors points (les points ont déjà le leur)
+    if(!isDot){
+      const tb=svgE('text',{x:LEFT+(f-0.5)*CW,y:TOP+5*CH+22,'text-anchor':'middle','font-size':'16','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.45)','font-weight':'600'});
+      tb.textContent=f; svg.appendChild(tb);
+    }
   }
   for(let s=0;s<6;s++){
     const t=svgE('text',{x:LEFT-8,y:TOP+s*CH+4,'text-anchor':'middle','font-size':'10','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.6)','font-size':'14','font-weight':'600'});
