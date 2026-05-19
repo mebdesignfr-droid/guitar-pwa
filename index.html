@@ -517,7 +517,7 @@ const CAGED = {
   A:{
     barre:{maj:{from:1,to:5},min:{from:1,to:5}},
     maj:[ null,  [0,1],[2,3],[2,4],[2,2],[0,1] ],
-    min:[ null,  [0,1],[2,3],[2,4],[0,1],[0,1] ]
+    min:[ null,  [0,1],[2,3],[2,4],[1,2],[0,1] ]
   },
   // Forme D : basée sur Ré ouvert — index barre cordes 2→5 (Ré→mi), Mi+La muets
   // Maj : index Ré, majeur Sol, annulaire Si, auriculaire mi
@@ -531,16 +531,16 @@ const CAGED = {
   // Cordes à vide : Ré (s=2) et Sol (s=3) sonnent à vide (rel=0,finger=0)
   G:{
     barre:{maj:null,min:null},
-    maj:[ [3,4],[2,3],[0,0],[0,0],[3,2],[3,1] ],
-    min:[ [3,4],[1,1],[0,0],[0,0],[3,2],[3,3] ]
+    maj:[ [3,4],[2,3],null,[0,1],[3,2],[3,1] ],
+    min:[ [3,4],[1,1],null,[0,1],[3,2],[3,3] ]
   },
   // Forme C : basée sur Do ouvert
   // Maj : index barre cordes 3→5 (Sol→mi) + autres doigts
   // Min : index barre toutes les cordes (comme E min transposé)
   C:{
-    barre:{maj:{from:3,to:5},min:{from:0,to:5}},
+    barre:{maj:{from:3,to:5},min:{from:3,to:4}},
     maj:[ [3,4],[3,3],[2,2],[0,1],[1,1],[0,1] ],
-    min:[ [0,1],[3,4],[2,3],[0,1],[0,1],[0,1] ]
+    min:[ [3,4],[3,3],[1,2],[0,1],[1,1],null ]
   }
 };
 const REF_NOTES  = {C:8,A:5,G:3,E:0,D:10};
