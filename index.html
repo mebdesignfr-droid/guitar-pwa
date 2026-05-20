@@ -22,8 +22,8 @@
   *{box-sizing:border-box;margin:0;padding:0;}
   body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1rem 2rem 1rem;}
   header{text-align:center;margin-bottom:1.5rem;}
-  h1{font-family:'DM Mono',monospace;font-size:1.5rem;font-weight:500;letter-spacing:.15em;color:var(--accent);margin-bottom:.3rem;}
-  .subtitle{font-size:.85rem;color:var(--text2);letter-spacing:.05em;}
+  h1{font-family:'DM Mono',monospace;font-size:2rem;font-weight:500;letter-spacing:.15em;color:var(--accent);margin-bottom:.3rem;}
+  .subtitle{font-size:1.1rem;color:var(--text2);letter-spacing:.05em;}
   .tuning-bar{margin-top:.8rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;}
   .tuning-label{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;}
   .tuning-strings{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
@@ -32,7 +32,7 @@
 
   /* TABS */
   .tabs{display:flex;width:100%;max-width:900px;margin-bottom:0;}
-  .tab-btn{flex:1;font-family:'DM Mono',monospace;font-size:.8rem;padding:10px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.05em;}
+  .tab-btn{flex:1;font-family:'DM Mono',monospace;font-size:1.05rem;padding:12px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.05em;}
   .tab-btn:first-child{border-radius:8px 0 0 0;}
   .tab-btn:last-child{border-radius:0 8px 0 0;}
   .tab-btn.active{background:var(--bg3);color:var(--text);border-bottom-color:var(--bg3);}
@@ -46,7 +46,7 @@
   .control-group{display:flex;flex-direction:column;gap:.5rem;}
   .control-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;}
   .btn-row{display:flex;flex-wrap:wrap;gap:6px;}
-  button.pill{font-family:'DM Mono',monospace;font-size:.78rem;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.04em;}
+  button.pill{font-family:'DM Mono',monospace;font-size:1rem;padding:7px 14px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s;letter-spacing:.04em;}
   button.pill:hover{border-color:rgba(255,255,255,0.2);color:var(--text);}
   button.pill.active{background:var(--accent);border-color:var(--accent);color:#0f0f0f;font-weight:500;}
   button.pill.shape-btn.active-C{background:var(--C);border-color:var(--C);color:#fff;}
@@ -61,13 +61,13 @@
 
   /* LEGEND */
   .legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);}
-  .legend-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--text2);cursor:pointer;padding:3px 8px;border-radius:4px;transition:background .15s;}
+  .legend-item{display:flex;align-items:center;gap:6px;font-size:1rem;color:var(--text2);cursor:pointer;padding:3px 8px;border-radius:4px;transition:background .15s;}
   .legend-item:hover{background:var(--bg3);}
   .legend-dot{width:12px;height:12px;border-radius:50%;}
-  .info-bar{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--text2);margin-top:.8rem;min-height:1.2em;letter-spacing:.03em;}
+  .info-bar{font-family:'DM Mono',monospace;font-size:1rem;color:var(--text2);margin-top:.8rem;min-height:1.2em;letter-spacing:.03em;}
 
   /* SOUND BUTTONS */
-  .sound-btn{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:.82rem;padding:5px 12px;cursor:pointer;transition:all .15s;}
+  .sound-btn{display:flex;align-items:center;gap:6px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text2);font-family:'DM Sans',sans-serif;font-size:1.05rem;padding:7px 14px;cursor:pointer;transition:all .15s;}
   .sound-btn:hover{border-color:rgba(255,255,255,0.2);color:var(--text);}
   .sound-btn.on{border-color:var(--accent);color:var(--accent);}
   .note-circle{cursor:pointer;transition:opacity .1s;}
@@ -77,22 +77,22 @@
   .fsb{position:fixed;left:0;top:50%;transform:translateY(-50%);background:var(--bg2);border:1px solid var(--border);border-left:none;border-radius:0 10px 10px 0;padding:.5rem .4rem;display:flex;flex-direction:column;gap:4px;z-index:200;max-height:92vh;overflow-y:auto;}
   .fsb::-webkit-scrollbar{width:3px;}
   .fsb::-webkit-scrollbar-thumb{background:var(--border);}
-  .fsb-label{font-family:'DM Mono',monospace;font-size:.55rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:2px 0;}
+  .fsb-label{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:2px 0;}
   .fsb-divider{height:1px;background:var(--border);margin:3px 0;}
-  .fsb-btn{font-family:'DM Mono',monospace;font-size:.72rem;padding:4px 8px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .12s;text-align:center;min-width:52px;}
+  .fsb-btn{font-family:'DM Mono',monospace;font-size:.98rem;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .12s;text-align:center;min-width:64px;}
   .fsb-btn:hover{border-color:rgba(255,255,255,0.25);color:var(--text);}
   .fsb-btn.active{background:var(--accent);border-color:var(--accent);color:#0f0f0f;font-weight:500;}
 
   /* CHORD DIAGRAM */
   .chord-diag-wrap{display:none;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-top:1rem;}
   .chord-diag-wrap.visible{display:flex;gap:2rem;align-items:flex-start;flex-wrap:wrap;}
-  .chord-diag-title{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;}
-  .chord-diag-name{font-size:1rem;font-weight:500;margin-bottom:.6rem;}
-  .chord-diag-barre{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--accent);margin-top:.5rem;}
-  .chord-diag-fingers{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text2);margin-top:.4rem;line-height:1.8;}
+  .chord-diag-title{font-family:'DM Mono',monospace;font-size:.92rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem;}
+  .chord-diag-name{font-size:1.35rem;font-weight:500;margin-bottom:.6rem;}
+  .chord-diag-barre{font-family:'DM Mono',monospace;font-size:1rem;color:var(--accent);margin-top:.5rem;}
+  .chord-diag-fingers{font-family:'DM Mono',monospace;font-size:1rem;color:var(--text2);margin-top:.4rem;line-height:1.8;}
   .chord-diag-info{display:flex;flex-direction:column;justify-content:flex-start;}
   .diag-zoom-btns{display:flex;gap:6px;margin-bottom:.8rem;}
-  .zoom-btn{font-family:'DM Mono',monospace;font-size:.8rem;padding:4px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;transition:all .15s;}
+  .zoom-btn{font-family:'DM Mono',monospace;font-size:1rem;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;transition:all .15s;}
   .zoom-btn:hover{border-color:rgba(255,255,255,0.3);color:var(--text);}
   .zoom-btn.active{border-color:var(--accent);color:var(--accent);}
 
@@ -103,55 +103,55 @@
   .exo-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.2rem;cursor:pointer;transition:all .2s;text-align:center;}
   .exo-card:hover{border-color:var(--accent);transform:translateY(-2px);}
   .exo-card.selected{border-color:var(--accent);background:#1e1a0e;}
-  .exo-num{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.4rem;}
-  .exo-title{font-size:.95rem;font-weight:500;margin-bottom:.3rem;}
-  .exo-desc{font-size:.78rem;color:var(--text2);line-height:1.4;}
+  .exo-num{font-family:'DM Mono',monospace;font-size:.88rem;color:var(--accent);letter-spacing:.1em;margin-bottom:.4rem;}
+  .exo-title{font-size:1.2rem;font-weight:500;margin-bottom:.3rem;}
+  .exo-desc{font-size:1rem;color:var(--text2);line-height:1.4;}
   .exo-zone{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1.5rem;min-height:280px;}
-  .exo-question{font-size:1.1rem;font-weight:500;margin-bottom:1.2rem;line-height:1.4;min-height:2em;}
+  .exo-question{font-size:1.35rem;font-weight:500;margin-bottom:1.2rem;line-height:1.4;min-height:2em;}
   .exo-answers{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1rem;}
-  .ans-btn{font-family:'DM Mono',monospace;font-size:.85rem;padding:8px 16px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text);cursor:pointer;transition:all .15s;}
+  .ans-btn{font-family:'DM Mono',monospace;font-size:1.08rem;padding:10px 20px;border-radius:8px;border:1px solid var(--border);background:var(--bg2);color:var(--text);cursor:pointer;transition:all .15s;}
   .ans-btn:hover{border-color:rgba(255,255,255,0.25);}
   .ans-btn.correct{background:#1a3a1a;border-color:#2a9e78;color:#90dfc0;}
   .ans-btn.wrong{background:#3a1a1a;border-color:#c45a2e;color:#f0a882;}
-  .exo-feedback{font-family:'DM Mono',monospace;font-size:.82rem;min-height:1.2em;margin-bottom:1rem;}
+  .exo-feedback{font-family:'DM Mono',monospace;font-size:1.05rem;min-height:1.2em;margin-bottom:1rem;}
   .exo-feedback.ok{color:#2a9e78;}
   .exo-feedback.ko{color:#c45a2e;}
-  .exo-score{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text3);}
-  .btn-next{font-family:'DM Mono',monospace;font-size:.8rem;padding:7px 18px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all .15s;margin-top:.5rem;}
+  .exo-score{font-family:'DM Mono',monospace;font-size:.98rem;color:var(--text3);}
+  .btn-next{font-family:'DM Mono',monospace;font-size:1rem;padding:9px 22px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all .15s;margin-top:.5rem;}
   .btn-next:hover{background:var(--accent);color:#0f0f0f;}
   .exo-fretboard-wrap{overflow-x:auto;margin:1rem 0;}
-  .chain-info{font-size:.82rem;color:var(--text2);margin-bottom:.8rem;line-height:1.5;}
+  .chain-info{font-size:1.05rem;color:var(--text2);margin-bottom:.8rem;line-height:1.5;}
   .chain-progress{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem;}
-  .chain-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text3);transition:all .3s;}
+  .chain-dot{width:36px;height:36px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'DM Mono',monospace;font-size:.95rem;color:var(--text3);transition:all .3s;}
   .chain-dot.done{border-color:#2a9e78;color:#90dfc0;background:#0a2018;}
   .chain-dot.current{border-color:var(--accent);color:var(--accent);background:#1e1a0e;}
 
   /* EXERCICE 4 */
   .metro-settings{display:flex;flex-wrap:wrap;gap:1.2rem;margin-bottom:1.5rem;align-items:flex-end;}
   .metro-group{display:flex;flex-direction:column;gap:.5rem;}
-  .metro-label{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;}
+  .metro-label{font-family:'DM Mono',monospace;font-size:.92rem;letter-spacing:.12em;color:var(--text3);text-transform:uppercase;}
   .metro-pills{display:flex;gap:6px;flex-wrap:wrap;}
-  .metro-pill{font-family:'DM Mono',monospace;font-size:.85rem;padding:8px 16px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s;}
+  .metro-pill{font-family:'DM Mono',monospace;font-size:1.08rem;padding:10px 18px;border-radius:20px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .15s;}
   .metro-pill:hover{border-color:rgba(255,255,255,0.25);color:var(--text);}
   .metro-pill.active{background:var(--accent);border-color:var(--accent);color:#0f0f0f;font-weight:500;}
-  .metro-start-btn{font-family:'DM Mono',monospace;font-size:1rem;padding:12px 32px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all .2s;}
+  .metro-start-btn{font-family:'DM Mono',monospace;font-size:1.25rem;padding:14px 36px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;transition:all .2s;}
   .metro-start-btn:hover{background:var(--accent);color:#0f0f0f;}
   .metro-start-btn.running{border-color:#c45a2e;color:#c45a2e;}
   .metro-start-btn.running:hover{background:#c45a2e;color:#fff;}
   .metro-chord-display{background:var(--bg);border:2px solid var(--border);border-radius:14px;padding:2rem;margin-bottom:1.2rem;text-align:center;min-height:130px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;transition:border-color .2s,box-shadow .2s;}
   .metro-chord-display.flash{border-color:var(--accent);box-shadow:0 0 24px rgba(212,168,83,0.18);}
-  .metro-chord-name{font-size:3rem;font-weight:500;line-height:1.1;}
-  .metro-chord-sub{font-family:'DM Mono',monospace;font-size:.95rem;color:var(--text2);}
-  .metro-chord-shape{font-family:'DM Mono',monospace;font-size:.8rem;padding:4px 14px;border-radius:20px;margin-top:.2rem;display:inline-block;}
+  .metro-chord-name{font-size:3.8rem;font-weight:500;line-height:1.1;}
+  .metro-chord-sub{font-family:'DM Mono',monospace;font-size:1.2rem;color:var(--text2);}
+  .metro-chord-shape{font-family:'DM Mono',monospace;font-size:1rem;padding:4px 14px;border-radius:20px;margin-top:.2rem;display:inline-block;}
   .metro-progress-wrap{margin-bottom:1rem;}
   .metro-progress-bar{width:100%;height:12px;background:var(--bg3);border-radius:6px;overflow:hidden;margin-bottom:.5rem;}
   .metro-progress-fill{height:100%;border-radius:6px;background:var(--accent);transition:width linear;}
   .metro-progress-fill.urgent{background:#c45a2e;}
-  .metro-timer-txt{font-family:'DM Mono',monospace;font-size:1.2rem;color:var(--text2);text-align:center;}
-  .metro-next-btn{width:100%;font-family:'DM Mono',monospace;font-size:1rem;padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .2s;margin-bottom:1rem;}
+  .metro-timer-txt{font-family:'DM Mono',monospace;font-size:1.5rem;color:var(--text2);text-align:center;}
+  .metro-next-btn{width:100%;font-family:'DM Mono',monospace;font-size:1.25rem;padding:16px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;transition:all .2s;margin-bottom:1rem;}
   .metro-next-btn:hover{border-color:rgba(255,255,255,0.3);color:var(--text);}
   .metro-history{display:flex;flex-wrap:wrap;gap:6px;margin-top:.8rem;}
-  .metro-hist-item{font-family:'DM Mono',monospace;font-size:.8rem;padding:5px 12px;border-radius:6px;border:1px solid var(--border);color:var(--text3);background:var(--bg);}
+  .metro-hist-item{font-family:'DM Mono',monospace;font-size:1rem;padding:7px 14px;border-radius:6px;border:1px solid var(--border);color:var(--text3);background:var(--bg);}
   .metro-diag-row{display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;margin-bottom:1rem;}
 
   /* ── FAB AUTO-DRILL ── */
@@ -189,14 +189,14 @@
     display:none;
   }
   .ad-panel-chord.visible{display:block;}
-  .ad-chord-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.6rem;line-height:1.1;}
-  .ad-chord-shape{display:inline-block;font-family:'DM Mono',monospace;font-size:.75rem;font-weight:600;
+  .ad-chord-name{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;line-height:1.1;}
+  .ad-chord-shape{display:inline-block;font-family:'DM Mono',monospace;font-size:.95rem;font-weight:600;
     padding:.15rem .55rem;border-radius:6px;margin-top:.3rem;}
 
-  .ad-section-label{font-family:'DM Mono',monospace;font-size:.58rem;color:var(--text3);
+  .ad-section-label{font-family:'DM Mono',monospace;font-size:.82rem;color:var(--text3);
     text-transform:uppercase;letter-spacing:.1em;margin-bottom:.25rem;}
   .ad-pills{display:flex;gap:.3rem;flex-wrap:wrap;}
-  .adpill{font-family:'DM Mono',monospace;font-size:.7rem;padding:.22rem .55rem;
+  .adpill{font-family:'DM Mono',monospace;font-size:.92rem;padding:.35rem .7rem;
     border-radius:6px;border:1px solid var(--border);background:var(--bg3);
     color:var(--text2);cursor:pointer;transition:all .15s;}
   .adpill.active{background:var(--accent);color:#fff;border-color:var(--accent);}
@@ -207,10 +207,10 @@
   .ad-progress-fill{height:100%;background:var(--accent3);transition:width 100ms linear;}
   .ad-progress-fill.urgent{background:var(--accent2);}
   .ad-timer-row{display:flex;justify-content:space-between;align-items:center;
-    font-family:'DM Mono',monospace;font-size:.62rem;color:var(--text3);display:none;}
+    font-family:'DM Mono',monospace;font-size:.85rem;color:var(--text3);display:none;}
 
   .ad-launch-btn{
-    font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:1.08rem;
     padding:.5rem;border-radius:10px;
     border:2px solid var(--accent3);background:transparent;color:var(--accent3);
     cursor:pointer;transition:all .15s;text-align:center;
@@ -313,10 +313,10 @@
   .deg-active .deg-badge{ display:inline; }
   #fsb-tonality-wrap{padding:2px 0;}
   #fsb-tonality-wrap select{
-    width:100%;font-family:'DM Mono',monospace;font-size:.7rem;
+    width:100%;font-family:'DM Mono',monospace;font-size:.92rem;
     background:var(--bg3);color:var(--text2);
     border:1px solid var(--border);border-radius:6px;
-    padding:3px 4px;cursor:pointer;
+    padding:5px 6px;cursor:pointer;
   }
   #fsb-tonality-wrap select:focus{outline:none;border-color:var(--accent);}
 </style>
@@ -373,10 +373,10 @@
       <div class="chord-diag-name" id="cd-name"></div>
       <div class="chord-diag-barre" id="cd-barre"></div>
       <div class="chord-diag-fingers" id="cd-fingers"></div>
-      <div style="margin-top:1rem;font-size:.75rem;color:var(--text3);line-height:2;border-top:1px solid var(--border);padding-top:.8rem;">
+      <div style="margin-top:1rem;font-size:1rem;color:var(--text3);line-height:2;border-top:1px solid var(--border);padding-top:.8rem;">
         ○ = corde à vide<br>× = corde muette<br>━ = barré index (1)<br>● contour blanc = tonique
       </div>
-      <div style="margin-top:.8rem;font-size:.75rem;color:var(--text3);line-height:1.8;border-top:1px solid var(--border);padding-top:.8rem;">
+      <div style="margin-top:.8rem;font-size:1rem;color:var(--text3);line-height:1.8;border-top:1px solid var(--border);padding-top:.8rem;">
         <strong style="color:var(--text2)">Rapport avec le manche</strong><br>
         Mêmes notes, deux vues :<br>
         Manche = côté horizontal<br>
@@ -1187,19 +1187,19 @@ function launchExo4() {
       <div class="metro-timer-txt" id="metro-timer-txt">—</div>
     </div>
 
-    <div id="metro-answer-hint" style="display:none;text-align:center;font-family:'DM Mono',monospace;font-size:.8rem;color:var(--text3);margin-bottom:.8rem;letter-spacing:.05em;">
+    <div id="metro-answer-hint" style="display:none;text-align:center;font-family:'DM Mono',monospace;font-size:1.02rem;color:var(--text3);margin-bottom:.8rem;letter-spacing:.05em;">
       ⏳ La réponse apparaît dans les derniers 25%…
     </div>
 
-    <button id="metro-show-answer-btn" style="display:none;width:100%;font-family:'DM Mono',monospace;font-size:.95rem;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;margin-bottom:1rem;" onclick="metroRevealAnswer()">👁 Voir la réponse</button>
+    <button id="metro-show-answer-btn" style="display:none;width:100%;font-family:'DM Mono',monospace;font-size:1.2rem;padding:14px;border-radius:10px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;margin-bottom:1rem;" onclick="metroRevealAnswer()">👁 Voir la réponse</button>
 
     <div id="metro-diag-row" class="metro-diag-row" style="display:none;">
       <div>
-        <div style="font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;">Diagramme</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.92rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;">Diagramme</div>
         <svg id="metro-cd-svg" width="200" height="240" viewBox="0 0 200 220"></svg>
       </div>
       <div style="flex:1;min-width:260px;">
-        <div style="font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;">Sur le manche</div>
+        <div style="font-family:'DM Mono',monospace;font-size:.92rem;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;">Sur le manche</div>
         <div style="overflow-x:auto;"><svg id="metro-fb-svg" width="820" class="fb" viewBox="0 0 820 200"></svg></div>
       </div>
     </div>
@@ -1208,10 +1208,10 @@ function launchExo4() {
 
     <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1rem;">
       <button class="metro-start-btn" id="metro-start-btn" onclick="metroToggle()">▶ Démarrer</button>
-      <div id="metro-count-txt" style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--text3);"></div>
+      <div id="metro-count-txt" style="font-family:'DM Mono',monospace;font-size:1.05rem;color:var(--text3);"></div>
     </div>
 
-    <div style="font-family:'DM Mono',monospace;font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Historique</div>
+    <div style="font-family:'DM Mono',monospace;font-size:.95rem;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem;">Historique</div>
     <div class="metro-history" id="metro-history"></div>
   `;
 }
@@ -1726,7 +1726,7 @@ document.addEventListener('click', function firstClick() {
         <input type="range" id="ad-timer-slider" min="2" max="60" value="7" step="1"
           style="flex:1;accent-color:var(--accent);cursor:pointer;"
           oninput="adSliderChange(this.value)">
-        <span id="ad-timer-val" style="font-family:'DM Mono',monospace;font-size:.82rem;color:var(--accent);min-width:32px;text-align:right;font-weight:600;">7s</span>
+        <span id="ad-timer-val" style="font-family:'DM Mono',monospace;font-size:1.05rem;color:var(--accent);min-width:36px;text-align:right;font-weight:600;">7s</span>
       </div>
     </div>
   </div>
