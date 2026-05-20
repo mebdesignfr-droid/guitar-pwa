@@ -839,7 +839,7 @@ function refreshDiagram(){
 function buildSidebar(){
   // Tonique
   const re=document.getElementById('fsb-roots');
-  re.style.cssText='display:flex;flex-direction:column;gap:3px;';
+  re.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:3px;';
   NOTES_FR.forEach((n,i)=>{
     const b=document.createElement('button');
     b.className='fsb-btn'+(i===0?' active':'');
