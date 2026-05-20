@@ -573,7 +573,8 @@ function collectNotes(rs,qual,shapes) {
       else if(rel===0) fret=shift;
       else fret=rel+shift;
       if(fret<0||fret>15) return;
-      const semi=OPEN_SEMI_ABS[s]+fret;
+      let semi=OPEN_SEMI_ABS[s]+fret;
+      while(semi>31) semi-=12; // clamp à B4 max — sampler Tone.js ne monte pas plus haut
       if(!by[s]||fret<by[s].fret) by[s]={fret,semi};
     });
   }
