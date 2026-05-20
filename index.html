@@ -734,7 +734,7 @@ function drawChordDiagram(shape,rs,qual) {
     else fret=rel+shift;               // doigt placé rel cases après le barré
     const isOpen=(fret===0);
     const inBarre=barreInfo&&s>=barreInfo.from&&s<=barreInfo.to&&finger===1&&rel===0;
-    return {s,fret,finger,muted:false,isOpen,inBarre,isRoot:(OPEN_SEMI[s]+fret)%12===rs};
+    return {s,fret,finger,rel,muted:false,isOpen,inBarre,isRoot:(OPEN_SEMI[s]+fret)%12===rs};
   });
 
   // Calculer la fenêtre de cases à afficher
@@ -806,7 +806,7 @@ function drawChordDiagram(shape,rs,qual) {
   // Dots individuels (autres doigts)
   const fingerUsed=new Set();
   if(isBarre) fingerUsed.add(1); // l'index est toujours utilisé si barré
-  SF.forEach(({s,fret,finger,muted,isOpen,inBarre,isRoot})=>{
+  SF.forEach(({s,fret,finger,rel,muted,isOpen,inBarre,isRoot})=>{
     if(muted||isOpen) return;
     // Sauter les cordes couvertes par le barré (elles sont déjà représentées)
     if(inBarre&&isBarre) return;
@@ -816,7 +816,7 @@ function drawChordDiagram(shape,rs,qual) {
     cdSvg.appendChild(se('circle',{cx:x,cy:y,r:dotR,fill:col,stroke:isRoot?'#fff':'none','stroke-width':isRoot?2:0,opacity:0.95}));
     const noteName=NOTES_FR[(OPEN_SEMI[s]+fret)%12];
     cdSvg.appendChild(se('text',{x,y:y+3.5,'text-anchor':'middle','font-size':noteName.length>2?'7':'8.5','font-family':'DM Mono, monospace','font-weight':'500',fill:'#fff','pointer-events':'none'},noteName));
-    if(finger&&(finger>1||!isBarre)){
+    if(finger&&(finger>1||(finger===1&&!isBarre&&rel>0))){
       cdSvg.appendChild(se('text',{x:x+dotR+1,y:y-dotR+3,'text-anchor':'start','font-size':'8','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.6)','pointer-events':'none'},String(finger)));
       fingerUsed.add(finger);
     }
