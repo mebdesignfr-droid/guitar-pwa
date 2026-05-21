@@ -498,8 +498,8 @@ const CAGED = {
       maj:[ [3,3],[2,2],[0,0],[0,0],[0,0],[3,4] ],  // 320003 — Sol standard
       min:[ [3,3],[1,1],[0,0],[0,0],[3,4],[3,4] ]   // 310033 — Sol mineur ouvert
     },
-    maj:[ [3,4],[2,3],null,[0,1],[3,2],[3,4] ],
-    min:[ [3,4],[1,2],null,[0,1],[3,3],[3,4] ]
+    maj:[ [3,3],[2,2],null,[0,1],[3,4],[3,4] ],
+    min:[ [3,3],[1,2],null,[0,1],[3,4],[3,4] ]
   },
   // Forme C : basée sur Do ouvert
   // Maj : index barre Sol+mi (cases 3→5), annulaire La, majeur Ré, auriculaire Si
@@ -841,7 +841,7 @@ function drawChordDiagram(shape,rs,qual) {
   });
 
   // Info
-  document.getElementById('cd-barre').textContent=isBarre?`Barré case ${shift}`:'Position ouverte';
+  document.getElementById('cd-barre').textContent=isBarre?`Barré case ${shift}`:shift===0?'Position ouverte':`Case ${shift}`;
   const FNAMES={1:isBarre?'Index (barré)':'Index',2:'Majeur',3:'Annulaire',4:'Auriculaire'};
   const lines=[];
   if(fingerUsed.has(1)) lines.push(isBarre?'1 = Index (barré)':'1 = Index');
