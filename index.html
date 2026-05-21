@@ -489,17 +489,19 @@ const CAGED = {
     maj:[ null, null, [0,1],[2,3],[3,4],[2,2] ],
     min:[ null, null, [0,1],[2,3],[3,4],[1,2] ]
   },
-  // Forme G : basée sur Sol ouvert — pas de barré index
+  // Forme G : basée sur Sol ouvert — barré complet en positions transposées
   // Position ouverte : template séparé (320003 maj, 310033 min)
-  // Positions barrées : template standard (shift transposé)
+  // Positions barrées : barré index + annulaire Mi grave + majeur La + auriculaire mi
+  // Maj : Ré/Sol/Si couverts par le barré (tierce maj et quinte valides à case shift)
+  // Min : Si à shift+3 (tierce maj à case shift = faux pour mineur → auriculaire plus haut)
   G:{
-    barre:{maj:null,min:null},
+    barre:{maj:{from:0,to:5},min:{from:0,to:5}},
     openTmpl:{
       maj:[ [3,3],[2,2],[0,0],[0,0],[0,0],[3,4] ],  // 320003 — Sol standard
       min:[ [3,3],[1,1],[0,0],[0,0],[3,4],[3,4] ]   // 310033 — Sol mineur ouvert
     },
-    maj:[ [3,3],[2,2],null,[0,1],[3,4],[3,4] ],
-    min:[ [3,3],[1,2],null,[0,1],[3,4],[3,4] ]
+    maj:[ [3,3],[2,2],[0,1],[0,1],[0,1],[3,4] ],
+    min:[ [3,3],[1,2],[0,1],[0,1],[3,4],[3,4] ]
   },
   // Forme C : basée sur Do ouvert
   // index barre Sol+mi, majeur Si(shift+1), annulaire Ré(shift+2), auriculaire La(shift+3)
