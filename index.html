@@ -498,8 +498,8 @@ const CAGED = {
       maj:[ [3,3],[2,2],[0,0],[0,0],[0,0],[3,4] ],  // 320003 — Sol standard
       min:[ [3,3],[1,1],[0,0],[0,0],[3,4],[3,4] ]   // 310033 — Sol mineur ouvert
     },
-    maj:[ [3,4],[2,3],null,[0,1],[3,2],[3,1] ],
-    min:[ [3,4],[1,1],null,[0,1],[3,2],[3,3] ]
+    maj:[ [3,4],[2,3],null,[0,1],[3,2],[3,4] ],
+    min:[ [3,4],[1,2],null,[0,1],[3,3],[3,4] ]
   },
   // Forme C : basée sur Do ouvert
   // Maj : index barre cordes 3→5 (Sol→mi) + autres doigts
@@ -828,7 +828,7 @@ function drawChordDiagram(shape,rs,qual) {
     const noteName=NOTES_FR[(OPEN_SEMI[s]+fret)%12];
     cdSvg.appendChild(se('text',{x,y:y+3.5,'text-anchor':'middle','font-size':noteName.length>2?'7':'8.5','font-family':'DM Mono, monospace','font-weight':'500',fill:'#fff','pointer-events':'none'},noteName));
     const df = openAdjust && finger>1 ? finger-1 : finger;
-    const showLabel = df && (df>1 || (!isBarre && (openAdjust ? finger<=2 : rel>0)));
+    const showLabel = df && (df>1 || (!isBarre && (openAdjust ? finger<=2 : (rel>0 || (shape==='G' && shift>0 && finger>0)))));
     if(showLabel){
       cdSvg.appendChild(se('text',{x:x+dotR+1,y:y-dotR+3,'text-anchor':'start','font-size':'8','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.6)','pointer-events':'none'},String(df)));
       fingerUsed.add(df);
