@@ -489,13 +489,13 @@ const CAGED = {
     maj:[ null, null, [0,1],[2,3],[3,4],[2,2] ],
     min:[ null, null, [0,1],[2,3],[3,4],[1,2] ]
   },
-  // Forme G : basée sur Sol ouvert — barré complet en positions transposées
+  // Forme G : basée sur Sol ouvert — pas de barré index, même transposée
   // Position ouverte : template séparé (320003 maj, 310033 min)
-  // Positions barrées : barré index + annulaire Mi grave + majeur La + auriculaire mi
-  // Maj : Ré/Sol/Si couverts par le barré (tierce maj et quinte valides à case shift)
-  // Min : Si à shift+3 (tierce maj à case shift = faux pour mineur → auriculaire plus haut)
+  // Positions transposées : annulaire(3) Mi grave, majeur(2) La, auriculaire(4) mi
+  // Ré/Sol/Si à case shift : dots sans label (jeu libre / mini-barré implicite)
+  // Min : Si NON couvert par shift (tierce maj à ce fret) → auriculaire à shift+3
   G:{
-    barre:{maj:{from:0,to:5},min:{from:0,to:5}},
+    barre:{maj:null,min:null},
     openTmpl:{
       maj:[ [3,3],[2,2],[0,0],[0,0],[0,0],[3,4] ],  // 320003 — Sol standard
       min:[ [3,3],[1,1],[0,0],[0,0],[3,4],[3,4] ]   // 310033 — Sol mineur ouvert
@@ -781,8 +781,8 @@ function drawChordDiagram(shape,rs,qual) {
       fill:isMark?'rgba(255,255,255,0.85)':'rgba(255,255,255,0.4)',
       'font-weight':isMark?'700':'400'},String(fn)));
   }
-  // Sillet uniquement en position ouverte (case 1 = sillet visible)
-  if(!isBarre){
+  // Sillet uniquement en position ouverte réelle (shift===0, pas de barré)
+  if(!isBarre && shift===0){
     cdSvg.appendChild(se('rect',{x:pL,y:pT-7,width:gW,height:7,fill:'#d8d4cc',rx:2}));
   }
 
@@ -834,7 +834,7 @@ function drawChordDiagram(shape,rs,qual) {
     const noteName=NOTES_FR[(OPEN_SEMI[s]+fret)%12];
     cdSvg.appendChild(se('text',{x,y:y+3.5,'text-anchor':'middle','font-size':noteName.length>2?'7':'8.5','font-family':'DM Mono, monospace','font-weight':'500',fill:'#fff','pointer-events':'none'},noteName));
     const df = openAdjust && finger>1 ? finger-1 : finger;
-    const showLabel = df && (df>1 || (!isBarre && (openAdjust ? finger<=2 : (rel>0 || (shape==='G' && shift>0 && finger>0)))));
+    const showLabel = df && (df>1 || (!isBarre && (openAdjust ? finger<=2 : (rel>0 || (shape==='G' && shift>0 && finger>1)))));
     if(showLabel){
       cdSvg.appendChild(se('text',{x:x+dotR+1,y:y-dotR+3,'text-anchor':'start','font-size':'8','font-family':'DM Mono, monospace',fill:'rgba(255,255,255,0.6)','pointer-events':'none'},String(df)));
       fingerUsed.add(df);
