@@ -478,7 +478,7 @@ const CAGED = {
   // Forme A : basée sur La ouvert — index barre cordes 1→5 (La→mi), Mi grave muet
   A:{
     barre:{maj:{from:1,to:5},min:{from:1,to:5}},
-    maj:[ null,  [0,1],[2,3],[2,4],[2,2],[0,1] ],
+    maj:[ null,  [0,1],[2,2],[2,3],[2,4],[0,1] ],
     min:[ null,  [0,1],[2,3],[2,4],[1,2],[0,1] ]
   },
   // Forme D : basée sur Ré ouvert — index barre cordes 2→5 (Ré→mi), Mi+La muets
@@ -502,17 +502,16 @@ const CAGED = {
     min:[ [3,3],[1,2],null,[0,1],[3,4],[3,4] ]
   },
   // Forme C : basée sur Do ouvert
-  // Maj : index barre Sol+mi (cases 3→5), annulaire La, majeur Ré, auriculaire Si
-  // Min : index barre Sol (case 3), annulaire La, majeur Ré, auriculaire Si
+  // index barre Sol+mi, majeur Si(shift+1), annulaire Ré(shift+2), auriculaire La(shift+3)
   // Position ouverte : template séparé — Si utilise l'index (x32010 standard)
   C:{
     barre:{maj:{from:3,to:5},min:{from:3,to:4}},
     openTmpl:{
-      maj:[ null,[3,3],[2,2],[0,0],[1,1],[0,0] ],  // x32010 — Do standard (Sol+mi vraiment à vide)
+      maj:[ null,[3,3],[2,2],[0,0],[1,1],[0,0] ],  // x32010 — Do standard
       min:[ null,[3,3],[1,2],[0,0],[1,1],null ]    // x31010 — Do mineur ouvert
     },
-    maj:[ null, [3,3],[2,2],[0,1],[1,4],[0,1] ],
-    min:[ null, [3,3],[1,2],[0,1],[1,4],null ]
+    maj:[ null, [3,4],[2,3],[0,1],[1,2],[0,1] ],
+    min:[ null, [3,4],[1,2],[0,1],[1,3],null ]
   }
 };
 const REF_NOTES  = {C:8,A:5,G:3,E:0,D:10};
