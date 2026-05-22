@@ -489,13 +489,12 @@ const CAGED = {
     maj:[ null, null, [0,1],[2,3],[3,4],[2,2] ],
     min:[ null, null, [0,1],[2,3],[3,4],[1,2] ]
   },
-  // Forme G : basée sur Sol ouvert — pas de barré index, même transposée
+  // Forme G : basée sur Sol ouvert
   // Position ouverte : template séparé (320003 maj, 310033 min)
-  // Positions transposées : annulaire(3) Mi grave, majeur(2) La, auriculaire(4) mi
-  // Ré/Sol/Si à case shift : dots sans label (jeu libre / mini-barré implicite)
-  // Min : Si NON couvert par shift (tierce maj à ce fret) → auriculaire à shift+3
+  // Positions transposées : barré partiel index sur Ré/Sol/Si (maj) ou Ré/Sol (min)
+  // Min : Si à shift = tierce maj (faux) → auriculaire à shift+3 à la place
   G:{
-    barre:{maj:null,min:null},
+    barre:{maj:{from:2,to:4},min:{from:2,to:3}},
     openTmpl:{
       maj:[ [3,3],[2,2],[0,0],[0,0],[0,0],[3,4] ],  // 320003 — Sol standard
       min:[ [3,3],[1,1],[0,0],[0,0],[3,4],[3,4] ]   // 310033 — Sol mineur ouvert
@@ -754,7 +753,8 @@ function drawChordDiagram(shape,rs,qual) {
 
   // Calculer la fenêtre de cases à afficher
   const nonZero=SF.filter(x=>!x.muted&&!x.isOpen&&x.fret>0).map(x=>x.fret);
-  const boxStart=nonZero.length?Math.min(...nonZero):Math.max(1,shift);
+  // En position ouverte (shift=0) : toujours commencer à la case 1 pour afficher le sillet proprement
+  const boxStart=shift===0?1:(nonZero.length?Math.min(...nonZero):Math.max(1,shift));
   const boxEnd=nonZero.length?Math.max(...nonZero):boxStart+3;
   const nFrets=Math.max(4,boxEnd-boxStart+2);
 
